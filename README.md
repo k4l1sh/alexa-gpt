@@ -214,3 +214,5 @@ lambda_handler = sb.lambda_handler()
 12. You are now ready to use your Alexa in ChatGPT mode. You can test in "Test" section enabling "Skill testing" in "Development". You should see results like this:
 
 ![test](images/test.png)
+
+Please note that running this skill will incur costs for using both AWS Lambda and the OpenAI API. Make sure you understand the pricing structure and monitor your usage to avoid unexpected charges.
