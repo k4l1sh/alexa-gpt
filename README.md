@@ -35,7 +35,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 
 5. Select "Start from Scratch" and click "Create Skill".
 
-![template](images/template.png)
+![template](images/select_template.png)
 
 6. In the "Build" section, navigate to the "JSON Editor" tab.
 
