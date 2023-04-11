@@ -82,7 +82,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 }
 ```
 
-![json_editor](images/json_editor.png)
+![json_editor](images/intents_son_editor_json.png)
 
 8. Save the model and click on "Build Model".
 
