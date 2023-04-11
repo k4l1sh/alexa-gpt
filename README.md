@@ -29,7 +29,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 
 ![choose a model](images/choose_a_model.png)
 
-4. Choose "Provision your own" for the backend resources.
+4. Choose "Alexa-hosted (Python)" for the backend resources.
 
 ![hosting services](images/hosting_services.png)
 
