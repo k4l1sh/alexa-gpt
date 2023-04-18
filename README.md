@@ -19,7 +19,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 
 1. Log in to your Amazon Developer account and navigate to the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask).
 
-2. Click on "Create Skill" and name the skill "Chat". Choose the primary localy according to your language.
+2. Click on "Create Skill" and name the skill "Chat". Choose the primary locale according to your language.
 
 ![name your skill](images/name_your_skill.png)
 
