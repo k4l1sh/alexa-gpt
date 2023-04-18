@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Boost your Alexa by making it respond as ChatGPT
+Boost your Alexa by making it respond as ChatGPT.
 
 This repository contains a tutorial on how to create a simple Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model.
 
@@ -19,7 +19,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 
 1. Log in to your Amazon Developer account and navigate to the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask).
 
-2. Click on "Create Skill" and name the skill "Chat". Choose the primary localy according to your language
+2. Click on "Create Skill" and name the skill "Chat". Choose the primary localy according to your language.
 
 ![name your skill](images/name_your_skill.png)
 
@@ -93,7 +93,7 @@ ask-sdk-core==1.11.0
 openai
 ```
 
-10. Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys)
+10. Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
 
 11. Replace your lambda_functions.py file with the [provided lambda_functions.py](lambda/lambda_functions.py). Remember to put your OpenAI API key:
 
