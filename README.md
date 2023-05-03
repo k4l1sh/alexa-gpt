@@ -52,11 +52,11 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
                     "slots": [
                         {
                             "name": "query",
-                            "type": "AMAZON.SearchQuery"
+                            "type": "AMAZON.Person"
                         }
                     ],
                     "samples": [
-                        " {query}"
+                        "{query}"
                     ]
                 },
                 {

@@ -8,11 +8,11 @@
                     "slots": [
                         {
                             "name": "query",
-                            "type": "AMAZON.SearchQuery"
+                            "type": "AMAZON.Person"
                         }
                     ],
                     "samples": [
-                        " {query}"
+                        "{query}"
                     ]
                 },
                 {
