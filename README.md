@@ -211,7 +211,11 @@ sb.add_exception_handler(CatchAllExceptionHandler())
 lambda_handler = sb.lambda_handler()
 ```
 
-12. Save and deploy. You are now ready to use your Alexa in ChatGPT mode. You can test in "Test" section enabling "Skill testing" in "Development". You should see results like this:
+12. Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
+
+![development_enabled](images/development_enabled.png)
+
+13. You are now ready to use your Alexa in ChatGPT mode. You should see results like this:
 
 ![test](images/test.png)
 
