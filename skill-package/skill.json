@@ -1,0 +1,150 @@
+{
+    "manifest": {
+        "publishingInformation": {
+            "locales": {
+                "en-US": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "en-GB": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "en-CA": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "en-IN": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "en-AU": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "es-ES": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT en Alexa",
+                    "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "es-MX": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT en Alexa",
+                    "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "es-US": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT en Alexa",
+                    "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "fr-FR": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT dans Alexa",
+                    "description": "Skill Alexa qui utilise l'API OpenAI pour générer des réponses à partir du modèle ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "fr-CA": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT dans Alexa",
+                    "description": "Skill Alexa qui utilise l'API OpenAI pour générer des réponses à partir du modèle ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "ja-JP": {
+                    "name": "Alexa GPT",
+                    "summary": "Alexaの中のChatGPT",
+                    "description": "OpenAI APIを使用してChatGPTモデルからの応答を生成するAlexaスキル",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "de-DE": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Alexa-Skill, der die OpenAI-API verwendet, um Antworten vom ChatGPT-Modell zu generieren",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "it-IT": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT in Alexa",
+                    "description": "Skill di Alexa che utilizza l'API di OpenAI per generare risposte dal modello ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "hi-IN": {
+                    "name": "Alexa GPT",
+                    "summary": "Alexa में ChatGPT",
+                    "description": "Alexa कौशल जो OpenAI API का उपयोग करके ChatGPT मॉडल से प्रतिक्रियाएं उत्पन्न करता है",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                },
+                "pt-BR": {
+                    "name": "Alexa GPT",
+                    "summary": "ChatGPT na Alexa",
+                    "description": "Skill Alexa que usa a API da OpenAI para gerar respostas a partir do modelo ChatGPT",
+                    "examplePhrases": [
+                        "Alexa chat"
+                    ],
+                    "keywords": []
+                }
+            },
+            "isAvailableWorldwide": true,
+            "testingInstructions": "Sample Testing Instructions",
+            "distributionCountries": []
+        },
+        "apis": {
+            "custom": {}
+        },
+        "manifestVersion": "1.0"
+    }
+}
