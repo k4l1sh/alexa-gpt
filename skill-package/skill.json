@@ -3,7 +3,7 @@
         "publishingInformation": {
             "locales": {
                 "en-US": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
                     "examplePhrases": [
@@ -12,7 +12,7 @@
                     "keywords": []
                 },
                 "en-GB": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
                     "examplePhrases": [
@@ -21,7 +21,7 @@
                     "keywords": []
                 },
                 "en-CA": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
                     "examplePhrases": [
@@ -30,7 +30,7 @@
                     "keywords": []
                 },
                 "en-IN": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
                     "examplePhrases": [
@@ -39,7 +39,7 @@
                     "keywords": []
                 },
                 "en-AU": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa skill that uses the OpenAI API to generate responses from the ChatGPT model",
                     "examplePhrases": [
@@ -48,7 +48,7 @@
                     "keywords": []
                 },
                 "es-ES": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT en Alexa",
                     "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
                     "examplePhrases": [
@@ -57,7 +57,7 @@
                     "keywords": []
                 },
                 "es-MX": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT en Alexa",
                     "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
                     "examplePhrases": [
@@ -66,7 +66,7 @@
                     "keywords": []
                 },
                 "es-US": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT en Alexa",
                     "description": "Skill de Alexa que utiliza la API de OpenAI para generar respuestas desde el modelo ChatGPT",
                     "examplePhrases": [
@@ -75,7 +75,7 @@
                     "keywords": []
                 },
                 "fr-FR": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT dans Alexa",
                     "description": "Skill Alexa qui utilise l'API OpenAI pour générer des réponses à partir du modèle ChatGPT",
                     "examplePhrases": [
@@ -84,7 +84,7 @@
                     "keywords": []
                 },
                 "fr-CA": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT dans Alexa",
                     "description": "Skill Alexa qui utilise l'API OpenAI pour générer des réponses à partir du modèle ChatGPT",
                     "examplePhrases": [
@@ -93,7 +93,7 @@
                     "keywords": []
                 },
                 "ja-JP": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "Alexaの中のChatGPT",
                     "description": "OpenAI APIを使用してChatGPTモデルからの応答を生成するAlexaスキル",
                     "examplePhrases": [
@@ -102,7 +102,7 @@
                     "keywords": []
                 },
                 "de-DE": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Alexa-Skill, der die OpenAI-API verwendet, um Antworten vom ChatGPT-Modell zu generieren",
                     "examplePhrases": [
@@ -111,7 +111,7 @@
                     "keywords": []
                 },
                 "it-IT": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT in Alexa",
                     "description": "Skill di Alexa che utilizza l'API di OpenAI per generare risposte dal modello ChatGPT",
                     "examplePhrases": [
@@ -120,7 +120,7 @@
                     "keywords": []
                 },
                 "hi-IN": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "Alexa में ChatGPT",
                     "description": "Alexa कौशल जो OpenAI API का उपयोग करके ChatGPT मॉडल से प्रतिक्रियाएं उत्पन्न करता है",
                     "examplePhrases": [
@@ -129,7 +129,7 @@
                     "keywords": []
                 },
                 "pt-BR": {
-                    "name": "Alexa GPT",
+                    "name": "chat",
                     "summary": "ChatGPT na Alexa",
                     "description": "Skill Alexa que usa a API da OpenAI para gerar respostas a partir do modelo ChatGPT",
                     "examplePhrases": [
