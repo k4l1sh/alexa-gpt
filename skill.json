@@ -145,7 +145,7 @@
         "apis": {
             "custom": {
 				"endpoint": {
-					"sourceDir": "lambda/py",
+					"sourceDir": "lambda",
 					"uri": "ask-custom-helloworld-classes-default"
 				}
 			}
