@@ -10,7 +10,7 @@
               "custom/default"
             ],
             "runtime": "python3.9",
-            "handler": "hello_world.handler"
+            "handler": "lambda_functions.handler"
           }
         ]
       },
