@@ -95,7 +95,7 @@ openai
 
 10. Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
 
-11. Replace your lambda_functions.py file with the [provided lambda_functions.py](lambda/lambda_functions.py). Remember to put your OpenAI API key:
+11. Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py). Remember to put your OpenAI API key:
 
 ```python
 import logging
