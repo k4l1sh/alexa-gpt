@@ -10,30 +10,40 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
   <img src="images/test.png" />
 </div>
 
-### Prerequisites
+## Prerequisites
 
 - An [Amazon Developer account](https://developer.amazon.com/)
 - An [OpenAI API key](https://beta.openai.com/signup/)
 
-### Step-by-step tutorial
+## Step-by-step tutorial
 
-1. Log in to your Amazon Developer account and navigate to the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask).
+### 1. <span name=item-1></span>
+Log in to your Amazon Developer account and navigate to the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask).
 
-2. Click on "Create Skill" and name the skill "Chat". Choose the primary locale according to your language.
+### 2.
+Click on "Create Skill" and name the skill "Chat". Choose the primary locale according to your language.
 
 ![name your skill](images/name_your_skill.png)
 
-3. Choose "Other" and "Custom" for the model.
+### 3.
+Choose "Other" and "Custom" for the model.
 
 ![type of experience](images/type_of_experience.png)
 
 ![choose a model](images/choose_a_model.png)
 
-4. Choose "Alexa-hosted (Python)" for the backend resources.
+### 4.
+Choose "Alexa-hosted (Python)" for the backend resources.
 
 ![hosting services](images/hosting_services.png)
 
-5. Select "Start from Scratch" and click "Create Skill".
+### 5.
+You now have two options:
+- Click on "Import Skill", paste the link of this repository https://github.com/kalishcode/alexa-gpt.git, click "Import" and go directly to [step 12](#12)
+![template](images/import_skill.png)
+
+Or
+- Select "Start from Scratch", click "Create Skill" and go to [step 6](#6)
 
 ![template](images/select_template.png)
 
@@ -95,7 +105,8 @@ openai
 
 10. Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
 
-11. Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py). Remember to put your OpenAI API key:
+### 11.
+Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py).
 
 ```python
 import logging
@@ -211,11 +222,16 @@ sb.add_exception_handler(CatchAllExceptionHandler())
 lambda_handler = sb.lambda_handler()
 ```
 
-12. Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
+### 12.
+Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/account/api-keys/)
+
+![open_api_key](images/open_api_key.png)
+
+13. Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
 
 ![development_enabled](images/development_enabled.png)
 
-13. You are now ready to use your Alexa in ChatGPT mode. You should see results like this:
+14. You are now ready to use your Alexa in ChatGPT mode. You should see results like this:
 
 ![test](images/test.png)
 
