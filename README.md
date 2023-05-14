@@ -42,7 +42,7 @@ You now have two options:
 - Click on "Import Skill", paste the link of this repository (https://github.com/kalishcode/alexa-gpt.git), click "Import" and go directly to [step 12](#12)
 ![template](images/import_skill.png)
 
-Or
+Or if you want to import the skill manually
 - Select "Start from Scratch", click "Create Skill" and go to [step 6](#6)
 
 ![template](images/select_template.png)
