@@ -39,7 +39,7 @@ Choose "Alexa-hosted (Python)" for the backend resources.
 
 ### 5.
 You now have two options:
-- Click on "Import Skill", paste the link of this repository https://github.com/kalishcode/alexa-gpt.git, click "Import" and go directly to [step 12](#12)
+- Click on "Import Skill", paste the link of this repository (https://github.com/kalishcode/alexa-gpt.git), click "Import" and go directly to [step 12](#12)
 ![template](images/import_skill.png)
 
 Or
@@ -47,9 +47,11 @@ Or
 
 ![template](images/select_template.png)
 
-6. In the "Build" section, navigate to the "JSON Editor" tab.
+### 6.
+In the "Build" section, navigate to the "JSON Editor" tab.
 
-7. Replace the existing JSON content with the [provided JSON content](json_editor.json):
+### 7.
+Replace the existing JSON content with the [provided JSON content](json_editor.json):
 
 ```json
 {
@@ -94,16 +96,19 @@ Or
 
 ![json_editor](images/intents_json_editor.png)
 
-8. Save the model and click on "Build Model".
+### 8.
+Save the model and click on "Build Model".
 
-9. Go to "Code" section and add "openai" to requirements.txt. Your requirements.txt should look like this:
+### 9.
+Go to "Code" section and add "openai" to requirements.txt. Your requirements.txt should look like this:
 
 ```txt
 ask-sdk-core==1.11.0
 openai
 ```
 
-10. Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
+### 10.
+Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
 
 ### 11.
 Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py).
@@ -227,11 +232,13 @@ Put your OpenAI API key that you got from your [OpenAI account](https://platform
 
 ![open_api_key](images/open_api_key.png)
 
-13. Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
+### 13.
+Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
 
 ![development_enabled](images/development_enabled.png)
 
-14. You are now ready to use your Alexa in ChatGPT mode. You should see results like this:
+### 14.
+You are now ready to use your Alexa in ChatGPT mode. You should see results like this:
 
 ![test](images/test.png)
 
