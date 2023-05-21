@@ -40,7 +40,7 @@ Choose "Alexa-hosted (Python)" for the backend resources.
 ### 5.
 You now have two options:
 - Click on "Import Skill", paste the link of this repository (https://github.com/k4l1sh/alexa-gpt.git), click "Import" and go directly to [step 12](#12)
-![template](images/import_skill.png)
+![template](images/import_git_skill.png)
 
 Or if you want to import the skill manually
 - Select "Start from Scratch", click "Create Skill" and go to [step 6](#6)
