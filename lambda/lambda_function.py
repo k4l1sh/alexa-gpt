@@ -22,7 +22,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Chat G.P.T. mode activated"
+        speak_output = "Hallo, hier ist Joshua"
 
         return (
             handler_input.response_builder
@@ -45,7 +45,7 @@ class GptQueryIntentHandler(AbstractRequestHandler):
         return (
                 handler_input.response_builder
                     .speak(response)
-                    .ask("Any other questions?")
+                    .ask("Hast Du noch eine Frage?")
                     .response
             )
 
@@ -59,7 +59,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         # type: (HandlerInput, Exception) -> Response
         logger.error(exception, exc_info=True)
 
-        speak_output = "Sorry, I had trouble doing what you asked. Please try again."
+        speak_output = "Das habe ich nicht verstanden. Bitte versuche es erneut."
 
         return (
             handler_input.response_builder
@@ -77,7 +77,7 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Leaving Chat G.P.T. mode"
+        speak_output = "Okay, Joshua Ende."
 
         return (
             handler_input.response_builder
@@ -87,8 +87,8 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
 def generate_gpt_response(query):
     try:
-        messages = [{"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": query}]
+        messages = [{"role": "system", "content": "Du bist Joshua, ein freundlicher, stets hilfreicher Assistent."},
+                    {"role": "user", "content": query + "\nAntworte als Joshua in maximal 30 Wörtern."}]
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
