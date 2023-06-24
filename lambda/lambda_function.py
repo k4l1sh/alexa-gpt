@@ -23,7 +23,11 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         speak_output = "Hallo, hier ist Joshua"
-
+        
+        # Reset chat history in session
+        session_attr = handler_input.attributes_manager.session_attributes
+        session_attr["chat_history"] = []
+        
         return (
             handler_input.response_builder
                 .speak(speak_output)
@@ -40,8 +44,16 @@ class GptQueryIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         query = handler_input.request_envelope.request.intent.slots["query"].value
-        response = generate_gpt_response(query)
+        
+        # Get chat history from session
+        session_attr = handler_input.attributes_manager.session_attributes
+        chat_history = session_attr["chat_history"]
+        
+        response = generate_gpt_response(chat_history, query)
 
+        # Add to chat history
+        session_attr["chat_history"].append((query, response))
+        
         return (
                 handler_input.response_builder
                     .speak(response)
@@ -85,10 +97,16 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
                 .response
         )
 
-def generate_gpt_response(query):
+def generate_gpt_response(chat_history, new_question):
     try:
-        messages = [{"role": "system", "content": "Du bist Joshua, ein freundlicher, stets hilfreicher Assistent."},
-                    {"role": "user", "content": query + "\nAntworte als Joshua in maximal 30 Wörtern."}]
+        messages = [{"role": "system", "content": "Du bist Joshua, ein freundlicher, stets hilfreicher Assistent."}]
+        
+        for question, answer in chat_history[-10:]:
+            messages.append({"role": "user", "content": question})
+            messages.append({"role": "assistant", "content": answer})
+        
+        messages.append({"role": "user", "content": new_question + "\nAntworte als Joshua und fasse Dich kurz und knapp."})
+        
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
