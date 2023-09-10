@@ -56,7 +56,6 @@ class GptQueryIntentHandler(AbstractRequestHandler):
                     .response
             )
 
-
 class CatchAllExceptionHandler(AbstractExceptionHandler):
     """Generic error handling to capture any syntax or routing errors."""
     def can_handle(self, handler_input, exception):
