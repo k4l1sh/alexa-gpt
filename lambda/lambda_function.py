@@ -109,7 +109,7 @@ def generate_gpt_response(chat_history, new_question):
         )
         return response['choices'][0]['message']['content'].strip()
     except Exception as e:
-        return f"Erro ao gerar resposta: {str(e)}"
+        return f"Error generating response: {str(e)}"
 
 sb = SkillBuilder()
 
