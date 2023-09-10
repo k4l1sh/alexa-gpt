@@ -22,12 +22,11 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Hallo, hier ist Joshua"
-        
-        # Reset chat history in session
+        speak_output = "Modo Chat G.P.T. Ativado"
+
         session_attr = handler_input.attributes_manager.session_attributes
         session_attr["chat_history"] = []
-        
+
         return (
             handler_input.response_builder
                 .speak(speak_output)
@@ -44,22 +43,19 @@ class GptQueryIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         query = handler_input.request_envelope.request.intent.slots["query"].value
-        
-        # Get chat history from session
+
         session_attr = handler_input.attributes_manager.session_attributes
         chat_history = session_attr["chat_history"]
-        
         response = generate_gpt_response(chat_history, query)
-
-        # Add to chat history
         session_attr["chat_history"].append((query, response))
-        
+
         return (
                 handler_input.response_builder
                     .speak(response)
-                    .ask("Hast Du noch eine Frage?")
+                    .ask("Alguma outra pergunta?")  # Keep the session open
                     .response
             )
+
 
 class CatchAllExceptionHandler(AbstractExceptionHandler):
     """Generic error handling to capture any syntax or routing errors."""
@@ -71,7 +67,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         # type: (HandlerInput, Exception) -> Response
         logger.error(exception, exc_info=True)
 
-        speak_output = "Das habe ich nicht verstanden. Bitte versuche es erneut."
+        speak_output = "Desculpe, tive problemas para fazer o que você pediu. Por favor, tente novamente."
 
         return (
             handler_input.response_builder
@@ -89,7 +85,7 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Okay, Joshua Ende."
+        speak_output = "Saindo do modo Chat G.P.T."
 
         return (
             handler_input.response_builder
@@ -99,14 +95,11 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
 def generate_gpt_response(chat_history, new_question):
     try:
-        messages = [{"role": "system", "content": "Du bist Joshua, ein freundlicher, stets hilfreicher Assistent."}]
-        
+        messages = [{"role": "system", "content": "You are a helpful assistant."}]
         for question, answer in chat_history[-10:]:
             messages.append({"role": "user", "content": question})
             messages.append({"role": "assistant", "content": answer})
-        
-        messages.append({"role": "user", "content": new_question + "\nAntworte als Joshua und fasse Dich kurz und knapp."})
-        
+        messages.append({"role": "user", "content": new_question})
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
@@ -117,7 +110,7 @@ def generate_gpt_response(chat_history, new_question):
         )
         return response['choices'][0]['message']['content'].strip()
     except Exception as e:
-        return f"Error generating response: {str(e)}"
+        return f"Erro ao gerar resposta: {str(e)}"
 
 sb = SkillBuilder()
 
