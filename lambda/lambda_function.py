@@ -8,7 +8,7 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 
 # Set your OpenAI API key
-openai.api_key = "PUT YOUR OPEN API KEY HERE"
+openai.api_key = "PUT YOUR OPENAI API KEY HERE"
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
