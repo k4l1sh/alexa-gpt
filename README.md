@@ -242,7 +242,7 @@ lambda_handler = sb.lambda_handler()
 ### 12.
 Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/account/api-keys/)
 
-![open_api_key](images/open_api_key.png)
+![open_api_key](images/openai_api_key.png)
 
 ### 13.
 Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
