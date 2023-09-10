@@ -22,8 +22,12 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Chat G.P.T. mode activated"
-
+        speak_output = "Hallo, hier ist Joshua"
+        
+        # Reset chat history in session
+        session_attr = handler_input.attributes_manager.session_attributes
+        session_attr["chat_history"] = []
+        
         return (
             handler_input.response_builder
                 .speak(speak_output)
@@ -40,12 +44,20 @@ class GptQueryIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         query = handler_input.request_envelope.request.intent.slots["query"].value
-        response = generate_gpt_response(query)
+        
+        # Get chat history from session
+        session_attr = handler_input.attributes_manager.session_attributes
+        chat_history = session_attr["chat_history"]
+        
+        response = generate_gpt_response(chat_history, query)
 
+        # Add to chat history
+        session_attr["chat_history"].append((query, response))
+        
         return (
                 handler_input.response_builder
                     .speak(response)
-                    .ask("Any other questions?")
+                    .ask("Hast Du noch eine Frage?")
                     .response
             )
 
@@ -59,7 +71,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         # type: (HandlerInput, Exception) -> Response
         logger.error(exception, exc_info=True)
 
-        speak_output = "Sorry, I had trouble doing what you asked. Please try again."
+        speak_output = "Das habe ich nicht verstanden. Bitte versuche es erneut."
 
         return (
             handler_input.response_builder
@@ -77,7 +89,7 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Leaving Chat G.P.T. mode"
+        speak_output = "Okay, Joshua Ende."
 
         return (
             handler_input.response_builder
@@ -85,10 +97,16 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
                 .response
         )
 
-def generate_gpt_response(query):
+def generate_gpt_response(chat_history, new_question):
     try:
-        messages = [{"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": query}]
+        messages = [{"role": "system", "content": "Du bist Joshua, ein freundlicher, stets hilfreicher Assistent."}]
+        
+        for question, answer in chat_history[-10:]:
+            messages.append({"role": "user", "content": question})
+            messages.append({"role": "assistant", "content": answer})
+        
+        messages.append({"role": "user", "content": new_question + "\nAntworte als Joshua und fasse Dich kurz und knapp."})
+        
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
