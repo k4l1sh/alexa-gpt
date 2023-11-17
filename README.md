@@ -105,7 +105,7 @@ Go to "Code" section and add "openai" to requirements.txt. Your requirements.txt
 ```txt
 ask-sdk-core==1.11.0
 boto3==1.9.216
-openai
+openai==0.28.1
 ```
 
 ### 10.
