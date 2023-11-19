@@ -102,7 +102,7 @@ def generate_gpt_response(chat_history, new_question):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-1106",
             messages=messages,
-            max_tokens=100,
+            max_tokens=300,
             n=1,
             temperature=0.5
         )
