@@ -24,7 +24,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Modo Chat Gê Pê Tê ativado."
+        speak_output = "Chat G.P.T. mode activated"
 
         session_attr = handler_input.attributes_manager.session_attributes
         session_attr["chat_history"] = []
@@ -54,7 +54,7 @@ class GptQueryIntentHandler(AbstractRequestHandler):
         return (
                 handler_input.response_builder
                     .speak(response)
-                    .ask("Mais alguma pergunta?")
+                    .ask("Any other questions?")
                     .response
             )
 
@@ -68,7 +68,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         # type: (HandlerInput, Exception) -> Response
         logger.error(exception, exc_info=True)
 
-        speak_output = "Desculpe, não entendi."
+        speak_output = "Sorry, I had trouble doing what you asked. Please try again."
 
         return (
             handler_input.response_builder
@@ -86,7 +86,7 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Saindo do modo Chat Gê Pê Tê."
+        speak_output = "Leaving Chat G.P.T. mode"
 
         return (
             handler_input.response_builder
