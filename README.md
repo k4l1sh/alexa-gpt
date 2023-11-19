@@ -105,7 +105,7 @@ Go to "Code" section and add "openai" to requirements.txt. Your requirements.txt
 ```txt
 ask-sdk-core==1.11.0
 boto3==1.9.216
-openai==0.28.1
+openai==1.3.3
 ```
 
 ### 10.
@@ -217,15 +217,15 @@ def generate_gpt_response(chat_history, new_question):
             messages.append({"role": "user", "content": question})
             messages.append({"role": "assistant", "content": answer})
         messages.append({"role": "user", "content": new_question})
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-1106",
             messages=messages,
-            max_tokens=100,
+            max_tokens=300,
             n=1,
             stop=None,
             temperature=0.5
         )
-        return response['choices'][0]['message']['content'].strip()
+        return response.choices[0].message.content
     except Exception as e:
         return f"Error generating response: {str(e)}"
 

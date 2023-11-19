@@ -102,9 +102,9 @@ def generate_gpt_response(chat_history, new_question):
             messages.append({"role": "assistant", "content": answer})
         messages.append({"role": "user", "content": new_question})
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-1106",
             messages=messages,
-            max_tokens=500,
+            max_tokens=300,
             n=1,
             stop=None,
             temperature=0.5
