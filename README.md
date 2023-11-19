@@ -222,7 +222,6 @@ def generate_gpt_response(chat_history, new_question):
             messages=messages,
             max_tokens=300,
             n=1,
-            stop=None,
             temperature=0.5
         )
         return response.choices[0].message.content
