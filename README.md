@@ -117,7 +117,7 @@ Replace your lambda_functions.py file with the [provided lambda_function.py](lam
 ```python
 import logging
 import ask_sdk_core.utils as ask_utils
-import openai
+from openai import OpenAI
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
@@ -125,7 +125,9 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 
 # Set your OpenAI API key
-openai.api_key = "PUT YOUR OPENAI API KEY HERE"
+client = OpenAI(
+    api_key="YOUR_API_KEY"
+)
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
