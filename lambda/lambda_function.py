@@ -1,6 +1,6 @@
 import logging
 import ask_sdk_core.utils as ask_utils
-import openai
+from openai import OpenAI
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
@@ -8,7 +8,9 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 
 # Set your OpenAI API key
-openai.api_key = "PUT YOUR OPENAI API KEY HERE"
+client = OpenAI(
+    api_key="YOUR_API_KEY"
+)
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -99,14 +101,14 @@ def generate_gpt_response(chat_history, new_question):
             messages.append({"role": "user", "content": question})
             messages.append({"role": "assistant", "content": answer})
         messages.append({"role": "user", "content": new_question})
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo-1106",
             messages=messages,
             max_tokens=300,
             n=1,
             temperature=0.5
         )
-        return response['choices'][0]['message']['content'].strip()
+        return response.choices[0].message.content
     except Exception as e:
         return f"Error generating response: {str(e)}"
 
