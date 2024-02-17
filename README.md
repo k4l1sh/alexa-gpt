@@ -105,7 +105,7 @@ Go to "Code" section and add "openai" to requirements.txt. Your requirements.txt
 ```txt
 ask-sdk-core==1.11.0
 boto3==1.9.216
-openai==1.3.3
+requests>=2.20.0
 ```
 
 ### 10.
@@ -115,19 +115,18 @@ Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and cl
 Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py).
 
 ```python
-import logging
-import ask_sdk_core.utils as ask_utils
-from openai import OpenAI
-from ask_sdk_core.skill_builder import SkillBuilder
-from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
+from ask_sdk_core.dispatch_components import AbstractRequestHandler
+from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
+import ask_sdk_core.utils as ask_utils
+import requests
+import logging
+import json
 
 # Set your OpenAI API key
-client = OpenAI(
-    api_key="YOUR_API_KEY"
-)
+api_key = "YOUR_API_KEY"
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -175,7 +174,6 @@ class GptQueryIntentHandler(AbstractRequestHandler):
                     .response
             )
 
-
 class CatchAllExceptionHandler(AbstractExceptionHandler):
     """Generic error handling to capture any syntax or routing errors."""
     def can_handle(self, handler_input, exception):
@@ -213,20 +211,28 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
         )
 
 def generate_gpt_response(chat_history, new_question):
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    url = "https://api.openai.com/v1/chat/completions"
+    messages = [{"role": "system", "content": "You are a helpful assistant."}]
+    for question, answer in chat_history[-10:]:
+        messages.append({"role": "user", "content": question})
+        messages.append({"role": "assistant", "content": answer})
+    messages.append({"role": "user", "content": new_question})
+    
+    data = {
+        "model": "gpt-3.5-turbo-1106",
+        "messages": messages,
+        "max_tokens": 300,
+        "n": 1,
+        "temperature": 0.5
+    }
     try:
-        messages = [{"role": "system", "content": "You are a helpful assistant."}]
-        for question, answer in chat_history[-10:]:
-            messages.append({"role": "user", "content": question})
-            messages.append({"role": "assistant", "content": answer})
-        messages.append({"role": "user", "content": new_question})
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo-1106",
-            messages=messages,
-            max_tokens=300,
-            n=1,
-            temperature=0.5
-        )
-        return response.choices[0].message.content
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response_data = response.json()
+        return response_data['choices'][0]['message']['content']
     except Exception as e:
         return f"Error generating response: {str(e)}"
 
@@ -243,7 +249,7 @@ lambda_handler = sb.lambda_handler()
 ### 12.
 Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/account/api-keys/)
 
-![open_api_key](images/openai_api_key.png)
+![openai_api_key](images/api_key.png)
 
 ### 13.
 Save and deploy. Go to "Test" section and enable "Skill testing" in "Development".
