@@ -13,7 +13,7 @@ This repository contains a tutorial on how to create a simple Alexa skill that u
 ## Prerequisites
 
 - An [Amazon Developer account](https://developer.amazon.com/)
-- An [OpenAI API key](https://beta.openai.com/signup/)
+- An [OpenAI API key](https://platform.openai.com/api-keys)
 
 ## Step-by-step tutorial
 
@@ -39,11 +39,11 @@ Choose "Alexa-hosted (Python)" for the backend resources.
 
 ### 5.
 You now have two options:
-- Click on "Import Skill", paste the link of this repository (https://github.com/k4l1sh/alexa-gpt.git), click "Import" and go directly to [step 12](#12)
+- Click on "Import Skill", paste the link of this repository (https://github.com/k4l1sh/alexa-gpt.git) and click on "Import".
 ![template](images/import_git_skill.png)
 
-Or if you want to import the skill manually
-- Select "Start from Scratch", click "Create Skill" and go to [step 6](#6)
+Or if you want to create the skill manually
+- Select "Start from Scratch" and click on "Create Skill"
 
 ![template](images/select_template.png)
 
@@ -51,7 +51,9 @@ Or if you want to import the skill manually
 In the "Build" section, navigate to the "JSON Editor" tab.
 
 ### 7.
-Replace the existing JSON content with the [provided JSON content](json_editor.json):
+If you have directly imported the skill from this repository, just change the "invocationName" to "chat" or another preferred word for activation and proceed to [step 12](#12).
+
+However, if you chose to manually create the skill, replace the existing JSON content with the [provided JSON content](json_editor.json):
 
 ```json
 {
@@ -109,7 +111,7 @@ requests>=2.20.0
 ```
 
 ### 10.
-Create an OpenAI API key by [signing up](https://beta.openai.com/signup/) and clicking in "+ Create new secret key" in the [API keys page](https://platform.openai.com/account/api-keys).
+Create an OpenAI API key on the [API keys page](https://platform.openai.com/api-keys) by clicking "+ Create new secret key".
 
 ### 11.
 Replace your lambda_functions.py file with the [provided lambda_function.py](lambda/lambda_function.py).
@@ -211,28 +213,31 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
         )
 
 def generate_gpt_response(chat_history, new_question):
+    """Generates a GPT response to a new question"""
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
     url = "https://api.openai.com/v1/chat/completions"
-    messages = [{"role": "system", "content": "You are a helpful assistant."}]
+    messages = [{"role": "system", "content": "You are a helpful assistant. Answer in 50 words or less."}]
     for question, answer in chat_history[-10:]:
         messages.append({"role": "user", "content": question})
         messages.append({"role": "assistant", "content": answer})
     messages.append({"role": "user", "content": new_question})
     
     data = {
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-3.5-turbo-0125",
         "messages": messages,
         "max_tokens": 300,
-        "n": 1,
         "temperature": 0.5
     }
     try:
         response = requests.post(url, headers=headers, data=json.dumps(data))
         response_data = response.json()
-        return response_data['choices'][0]['message']['content']
+        if response.ok:
+            return response_data['choices'][0]['message']['content']
+        else:
+            return f"Error {response.status_code}: {response_data['error']['message']}"
     except Exception as e:
         return f"Error generating response: {str(e)}"
 
@@ -247,7 +252,7 @@ lambda_handler = sb.lambda_handler()
 ```
 
 ### 12.
-Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/account/api-keys/)
+Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/api-keys)
 
 ![openai_api_key](images/api_key.png)
 

@@ -94,28 +94,31 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
         )
 
 def generate_gpt_response(chat_history, new_question):
+    """Generates a GPT response to a new question"""
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
     url = "https://api.openai.com/v1/chat/completions"
-    messages = [{"role": "system", "content": "You are a helpful assistant."}]
+    messages = [{"role": "system", "content": "You are a helpful assistant. Answer in 50 words or less."}]
     for question, answer in chat_history[-10:]:
         messages.append({"role": "user", "content": question})
         messages.append({"role": "assistant", "content": answer})
     messages.append({"role": "user", "content": new_question})
     
     data = {
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-3.5-turbo-0125",
         "messages": messages,
         "max_tokens": 300,
-        "n": 1,
         "temperature": 0.5
     }
     try:
         response = requests.post(url, headers=headers, data=json.dumps(data))
         response_data = response.json()
-        return response_data['choices'][0]['message']['content']
+        if response.ok:
+            return response_data['choices'][0]['message']['content']
+        else:
+            return f"Error {response.status_code}: {response_data['error']['message']}"
     except Exception as e:
         return f"Error generating response: {str(e)}"
 
