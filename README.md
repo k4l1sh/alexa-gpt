@@ -165,7 +165,9 @@ class GptQueryIntentHandler(AbstractRequestHandler):
         query = handler_input.request_envelope.request.intent.slots["query"].value
 
         session_attr = handler_input.attributes_manager.session_attributes
-        response = generate_gpt_response(session_attr.get("chat_history", []), query)
+        if "chat_history" not in session_attr:
+            session_attr["chat_history"] = []
+        response = generate_gpt_response(session_attr["chat_history"], query)
         session_attr["chat_history"].append((query, response))
 
         return (
