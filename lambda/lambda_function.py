@@ -7,7 +7,6 @@ import ask_sdk_core.utils as ask_utils
 import requests
 import logging
 import json
-import os
 import re
 
 # Set your OpenAI API key
