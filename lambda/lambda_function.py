@@ -12,6 +12,8 @@ import re
 # Set your OpenAI API key
 api_key = "YOUR_API_KEY"
 
+model = "gpt-4o-mini"
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -246,10 +248,9 @@ def generate_gpt_response(chat_history, new_question, is_followup=False):
     messages.append({"role": "user", "content": new_question})
     
     data = {
-        "model": "gpt-4o-mini",
+        "model": model,
         "messages": messages,
-        "max_tokens": 300,
-        "temperature": 0.5
+        "max_tokens": 300
     }
     
     try:
